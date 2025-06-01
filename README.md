@@ -1,6 +1,6 @@
 # layer-miner
 
-Skrip ini dirancang untuk menjalankan container Chromium (mis. untuk aktivitas otomatis) di lingkungan Google Cloud Shell, dengan konfigurasi optimasi jaringan, instalasi tool, setup `rclone`, dan pengambilan file dari Google Drive.
+Skrip ini dirancang untuk menjalankan container Chromium (mis. untuk aktivitas otomatis) di lingkungan Cloud Shell, dengan konfigurasi optimasi jaringan, instalasi tool, setup `rclone`, dan pengambilan file dari Google Drive.
 
 ## 🔧 Fitur
 - TCP BBR tuning otomatis
