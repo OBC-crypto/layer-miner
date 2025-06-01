@@ -25,7 +25,7 @@ curl https://rclone.org/install.sh | sudo bash
 REMOTE_NAME="gdrive"
 TOKEN_FILE="./token.json"
 RCLONE_CONF_PATH="$HOME/.config/rclone/rclone.conf"
-DEST_FOLDER="$HOME"
+DEST_FOLDER="$(pwd)"
 GDRIVE_FOLDER="Project-Tutorial/layer-miner"
 
 if [ ! -f "$TOKEN_FILE" ]; then
