@@ -46,7 +46,7 @@ EOF
 
 echo "✅ rclone.conf berhasil dibuat."
 
-echo "📁 Menyalin file layer-miner dari Google Drive ke $DEST_FOLDER ..."
+echo "📁 Menyalin file layer-miner dari Drive ke $DEST_FOLDER ..."
 rclone copy --config="$RCLONE_CONF_PATH" "$REMOTE_NAME:$GDRIVE_FOLDER" "$DEST_FOLDER" --progress
 
 # ========================
