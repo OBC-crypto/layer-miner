@@ -55,7 +55,7 @@ rclone copy --config="$RCLONE_CONF_PATH" "$REMOTE_NAME:$GDRIVE_FOLDER" "$DEST_FO
 echo "🐳 Menyiapkan kontainer Chromium..."
 
 docker load -i chromium-stable.tar
-sudo tar -xzvf chromium-data-10.tar.gz -C ~/
+sudo tar -xzvf chromium-data.tar.gz -C ~/
 
 docker run -d \
   --name chromium-node \
@@ -66,8 +66,7 @@ docker run -d \
 echo "🧹 Membersihkan file yang tidak dibutuhkan..."
 sudo rm -f chromium-stable.tar
 sudo rm -f chromium-data-ori.tar.gz
-sudo rm -f chromium-data-r1.tar.gz
-sudo rm -f chromium-data-r3.tar.gz
+sudo rm -f chromium-data.tar.gz
 
 echo "✅ Selesai setup.mulai penambangan..."
 ping 8.8.8.8
