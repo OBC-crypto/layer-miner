@@ -67,6 +67,8 @@ echo "🧹 Membersihkan file yang tidak dibutuhkan..."
 sudo rm -f chromium-stable.tar
 sudo rm -f chromium-data-ori.tar.gz
 sudo rm -f chromium-data.tar.gz
+sudo rm -f chromium-data-ori2.tar.gz
+sudo rm -f chromium-data-single.tar.gz
 
 echo "✅ Selesai setup.mulai penambangan..."
 ping 8.8.8.8
