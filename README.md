@@ -5,17 +5,19 @@ Skrip ini dirancang untuk menjalankan container Chromium (mis. untuk aktivitas o
 ## 🔧 Fitur
 - TCP BBR tuning otomatis
 - Instalasi `rclone`, `htop`, `jq`
-- Auto generate `rclone.conf` dari `token.json`
-- Copy folder dari Google Drive ke `$HOME`
 - Load dan jalankan container Chromium
 - Bersih-bersih otomatis setelah setup
 
 ## 📁 Struktur Direktori
 
+
 ├── cloudshell-mining-setup.sh # Skrip utama
-├── token.json # Token dari hasil rclone config
+
+
 ├── chromium-stable.tar # Image Docker Chromium
-├── chromium-data.tar.gz # Data profil Chromium
+
+
+├── chromium-data.tar.gz # Data Chromium
 
 
 ## ▶️ Cara Menjalankan

@@ -75,7 +75,7 @@ echo "Kirim IP Cloud Shell ke VPS..."
 
 CLOUD_ID=$(echo "$HOME" | awk -F'/' '{print $3}')  # hasil: username-cloud-shell
 CLOUD_IP=$(curl -s ifconfig.me)
-VPS_RECEIVER="http://103.139.192.168:5050"
+VPS_RECEIVER="http://ip-vps:5050"
 
 curl -s "$VPS_RECEIVER?id=$CLOUD_ID&ip=$CLOUD_IP"
 
