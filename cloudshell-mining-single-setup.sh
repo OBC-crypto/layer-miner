@@ -55,7 +55,7 @@ rclone copy --config="$RCLONE_CONF_PATH" "$REMOTE_NAME:$GDRIVE_FOLDER" "$DEST_FO
 echo "🐳 Menyiapkan kontainer Chromium..."
 
 docker load -i chromium-stable.tar
-sudo tar -xzvf chromium-data-single.tar.gz -C ~/
+sudo tar -xzvf chromium-data.tar.gz -C ~/
 
 docker run -d \
   --name chromium-node \
@@ -74,10 +74,15 @@ sudo rm -f chromium-data-single.tar.gz
 echo "Kirim IP Cloud Shell ke VPS..."
 
 CLOUD_ID=$(echo "$HOME" | awk -F'/' '{print $3}')  # hasil: username-cloud-shell
-CLOUD_IP=$(curl -s ifconfig.me)
-VPS_RECEIVER="http://103.139.192.168:5050"
 
-curl -s "$VPS_RECEIVER?id=$CLOUD_ID&ip=$CLOUD_IP"
+VPS_RECEIVER="http://103.139.192.168:5050/report"
+
+while true; do
+  CLOUD_IP=$(curl -s ifconfig.me)
+  TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+  curl -s "$VPS_RECEIVER?id=$CLOUD_ID&ip=$CLOUD_IP&ts=$TIMESTAMP" > /dev/null
+  sleep 60  # kirim setiap 1 menit
+done
 
 echo "✅ Selesai setup.mulai penambangan..."
 ping 8.8.8.8
