@@ -1,30 +1,66 @@
-# layer-miner
+# 🌐 Layer-Miner: Chromium CloudShell Automation
 
-Skrip ini dirancang untuk menjalankan container Chromium (mis. untuk aktivitas otomatis) di lingkungan Cloud Shell, dengan konfigurasi optimasi jaringan, instalasi tool, setup `rclone`, dan pengambilan file dari Google Drive.
+Layer-Miner adalah skrip otomatisasi yang memanfaatkan container [linuxserver/chromium](https://hub.docker.com/r/linuxserver/chromium) di lingkungan **Cloud Shell**, dirancang untuk menjalankan Chromium secara headless dengan konfigurasi optimal untuk aktivitas otomatis.
 
-## 🔧 Fitur
-- TCP BBR tuning otomatis
-- Instalasi `rclone`, `htop`, `jq`
-- Load dan jalankan container Chromium
-- Bersih-bersih otomatis setelah setup
+---
+
+## 🔧 Fitur Utama
+
+- 🚀 **Optimasi Jaringan Otomatis**  
+  Mengaktifkan TCP BBR untuk performa jaringan maksimal.
+
+- 🧰 **Instalasi Alat Pendukung**  
+  Otomatis menginstal `rclone`, `htop`, `jq`, dan `screen`.
+
+- 🧪 **Deteksi & Optimasi Resource**  
+  Menyesuaikan konfigurasi berdasarkan kemampuan resource Cloud Shell secara real-time.
+
+- 🧼 **Pembersihan Otomatis**  
+  Menghapus file-file sementara dan log setelah setup selesai.
+
+- 📢 **Notifikasi Telegram**  
+  Kirim pemberitahuan ketika Cloud Shell mulai atau berhenti bekerja.
+
+---
 
 ## 📁 Struktur Direktori
 
+├── cloudshell-mining-setup.sh # Skrip utama untuk setup otomatis
 
-├── cloudshell-mining-setup.sh # Skrip utama
+├── reporter.sh # Skrip pengirim notifikasi Telegram
+
+├── chromium-stable.tar # Docker image Chromium
+
+├── chromium-data.tar.gz # Data Chromium (opsional)
 
 
-├── chromium-stable.tar # Image Docker Chromium
+---
+
+## ▶️ Cara Penggunaan
+
+1. **Persiapan File**
+   - Upload file berikut ke direktori Cloud Shell Anda:
+     - `token.json` (untuk notifikasi Telegram)
+     - `chromium-stable.tar`
+     - `chromium-data.tar.gz` (jika ingin memuat data sebelumnya)
+
+2. **Eksekusi Skrip**
+   Jalankan perintah berikut di Cloud Shell terminal:
 
 
-├── chromium-data.tar.gz # Data Chromium
+   ```bash
+   screen -S reporter
+   chmod +x cloudshell-mining-setup.sh
+   ./cloudshell-mining-setup.sh
 
+   chmod +x reporter.sh
+   ./reporter.sh
 
-## ▶️ Cara Menjalankan
+🛠️ Berdasarkan Proyek Open Source
+Proyek ini menggunakan image dari:
 
-1. Upload file `token.json`, `chromium-stable.tar`, dan `chromium-data.tar.gz` ke Cloud Shell.
-2. Jalankan:
+linuxserver/chromium
+Container Chromium berbasis LinuxServer.io untuk penggunaan ringan dan stabil di lingkungan headless.
 
-```bash
-chmod +x cloudshell-mining-setup.sh
-./cloudshell-mining-setup.sh
+⚠️ Disclaimer
+Skrip ini hanya untuk tujuan pembelajaran dan eksperimen pribadi. Penggunaan pada layanan Cloud harus mematuhi Ketentuan Layanan Cloud. Penyalahgunaan dapat menyebabkan penangguhan akun.
