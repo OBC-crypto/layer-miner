@@ -26,7 +26,7 @@ REMOTE_NAME="gdrive"
 TOKEN_FILE="./token.json"
 RCLONE_CONF_PATH="$HOME/.config/rclone/rclone.conf"
 DEST_FOLDER="$(pwd)"
-GDRIVE_FOLDER="Project-Tutorial/layer-miner"
+GDRIVE_FOLDER="Project-Tutorial/layer-miner/layer-bot"
 
 if [ ! -f "$TOKEN_FILE" ]; then
   echo "❌ File token.json tidak ditemukan di path: $TOKEN_FILE"
@@ -55,7 +55,8 @@ rclone copy --config="$RCLONE_CONF_PATH" "$REMOTE_NAME:$GDRIVE_FOLDER" "$DEST_FO
 echo "🐳 Menyiapkan kontainer Chromium..."
 
 docker load -i chromium-stable.tar
-sudo tar -xzvf chromium-data.tar.gz -C ~/
+sudo tar -xzvf chromium-data-ori.tar.gz -C ~/
+#sudo tar -xzvf chromium-data.tar.gz -C ~/
 
 docker run -d \
   --name chromium-node \
@@ -66,9 +67,9 @@ docker run -d \
 echo "🧹 Membersihkan file yang tidak dibutuhkan..."
 sudo rm -f chromium-stable.tar
 sudo rm -f chromium-data-ori.tar.gz
-sudo rm -f chromium-data.tar.gz
-sudo rm -f chromium-data-ori2.tar.gz
-sudo rm -f chromium-data-single.tar.gz
+#sudo rm -f chromium-data.tar.gz
+#sudo rm -f chromium-data-ori2.tar.gz
+#sudo rm -f chromium-data-single.tar.gz
 
 echo "✅ Selesai setup. Memulai penambangan..."
 
